@@ -1,0 +1,29 @@
+1. Создание группы
+models.Group.objects.create(name='ИВТ-111')
+
+2. Создание курса
+models.Course.objects.create(name='Backend')
+
+3. Получаем группу ИВТ-111
+group = models.Group.objects.filter(name='ИВТ-111').first()
+
+4. Получаем курс Backend
+course = models.Course.objects.filter(name='Backend').first()
+
+5. Создаем пользователя
+models.User.objects.create(name='Иван', group=group, course=course)
+
+6. Получаем пользователя Иван
+user = models.User.objects.filter(name='Иван').first()
+
+7. Получение количества курсов у пользователя Иван
+user.course.count()
+
+8. Изменяем имя пользователя с Иван на Саша
+user.name = 'Саша'
+
+9. Удаляем пользователя Саша
+models.User.objects.filter(name='Саша').first().delete()
+
+10. Вывод списка групп
+models.Group.objects.values_list(name, flat= True)
